@@ -47,22 +47,15 @@
             line-height: 1.6;
         }
 
-        /* --- PLACEHOLDERS Y TIPOGRAFÍA --- */
+        /* --- TIPOGRAFÍA Y ESTILOS BASE --- */
         img, video {
             max-width: 100%;
             height: auto;
             display: block;
             border-radius: var(--border-radius);
-            background-color: #a5d6a7; /* Verde placeholder */
+            /* Ya no usamos placeholder verde, usamos el fondo de tarjeta */
+            background-color: var(--color-tarjeta); 
             min-height: 100px;
-            color: #333;
-            font-weight: 500;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 10px;
         }
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
@@ -165,6 +158,8 @@
             background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
         }
         
         .lightbox.active {
@@ -259,125 +254,118 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-grid">
-                    <a href="img/placeholder-grande-1.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-1.jpg" alt="Descripción de la imagen 1">
-                    </a>
-                    <a href="img/placeholder-grande-2.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-2.jpg" alt="Descripción de la imagen 2">
-                    </a>
-                    <a href="img/placeholder-grande-3.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-3.jpg" alt="Descripción de la imagen 3">
-                    </a>
-                    <a href="img/placeholder-grande-4.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-4.jpg" alt="Descripción de la imagen 4">
-                    </a>
                     
-                    <a href="img/placeholder-grande-5.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-5.jpg" alt="Descripción de la imagen 5">
-                    </a>
-                    <a href="img/placeholder-grande-6.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-6.jpg" alt="Descripción de la imagen 6">
-                    </a>
-                    <a href="img/placeholder-grande-7.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-7.jpg" alt="Descripción de la imagen 7">
-                    </a>
-                    <a href="img/placeholder-grande-8.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-8.jpg" alt="Descripción de la imagen 8">
-                    </a>
-                    
-                    <a href="img/placeholder-grande-9.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-9.jpg" alt="Descripción de la imagen 9">
-                    </a>
-                    <a href="img/placeholder-grande-10.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-10.jpg" alt="Descripción de la imagen 10">
-                    </a>
-                    <a href="img/placeholder-grande-11.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-11.jpg" alt="Descripción de la imagen 11">
-                    </a>
-                    <a href="img/placeholder-grande-12.jpg" class="gallery-item">
-                        <img src="img/placeholder-thumb-12.jpg" alt="Descripción de la imagen 12">
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-    
-    <div class="lightbox" id="gallery-lightbox">
-        <span class="lightbox-close" id="lightbox-close">&times;</span>
-        <a class="lightbox-prev" id="lightbox-prev">&#10094;</a>
-        <a class="lightbox-next" id="lightbox-next">&#10095;</a>
-        <img class="lightbox-content" id="lightbox-img">
-    </div>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const galleryItems = document.querySelectorAll(".gallery-item");
-        const lightbox = document.getElementById("gallery-lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-        const closeBtn = document.getElementById("lightbox-close");
-        const prevBtn = document.getElementById("lightbox-prev");
-        const nextBtn = document.getElementById("lightbox-next");
-
-        let currentImageIndex;
-        // Creamos un array con todas las URLs de las imágenes grandes
-        const images = Array.from(galleryItems).map(item => item.href);
-
-        if (lightbox) {
-            
-            galleryItems.forEach((item, index) => {
-                item.addEventListener("click", (e) => {
-                    e.preventDefault(); // Evita que el link se abra
-                    currentImageIndex = index;
-                    showImage(currentImageIndex);
-                    lightbox.classList.add("active");
-                });
-            });
-
-            function showImage(index) {
-                lightboxImg.src = images[index];
-                currentImageIndex = index; // Actualiza el índice
-            }
-
-            function showNextImage() {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                showImage(currentImageIndex);
-            }
-
-            function showPrevImage() {
-                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                showImage(currentImageIndex);
-            }
-
-            function closeLightbox() {
-                lightbox.classList.remove("active");
-            }
-
-            closeBtn.addEventListener("click", closeLightbox);
-            nextBtn.addEventListener("click", showNextImage);
-            prevBtn.addEventListener("click", showPrevImage);
-
-            // Cierra el lightbox si se hace clic en el fondo oscuro
-            lightbox.addEventListener("click", (e) => {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-
-            // Navegación con teclado
-            document.addEventListener("keydown", (e) => {
-                if (lightbox.classList.contains("active")) {
-                    if (e.key === "ArrowRight") {
-                        showNextImage();
-                    } else if (e.key === "ArrowLeft") {
-                        showPrevImage();
-                    } else if (e.key === "Escape") {
-                        closeLightbox();
-                    }
-                }
-            });
-        }
-    });
-    </script>
-</body>
-</html>
+                    <a href="https://berrettasa.com/wp-content/uploads/2025/08/Fardos-de-papel-Blanco-2.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2025/08/Fardos-de-papel-Blanco-2.jpg" alt="Imagen de galería 1"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/cropped-web-app-manifest-512x512-1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/cropped-web-app-manifest-512x512-1.png" alt="Imagen de galería 2"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/web-app-manifest-512x512-1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/web-app-manifest-512x512-1.png" alt="Imagen de galería 3"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/9.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/9.webp" alt="Imagen de galería 4"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/8.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/8.webp" alt="Imagen de galería 5"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/11.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/11.webp" alt="Imagen de galería 6"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/10.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/10.webp" alt="Imagen de galería 7"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/7.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/7.webp" alt="Imagen de galería 8"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/6.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/6.webp" alt="Imagen de galería 9"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/5.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/5.webp" alt="Imagen de galería 10"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/4.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/4.webp" alt="Imagen de galería 11"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/papel-bobina1-0511699dc2bceca95d16146983647701-1024-1024.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/papel-bobina1-0511699dc2bceca95d16146983647701-1024-1024.webp" alt="Imagen de galería 12"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/D_NQ_NP_858991-MLA48308879968_112021-O-1.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/D_NQ_NP_858991-MLA48308879968_112021-O-1.webp" alt="Imagen de galería 13"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/resma-papel-sulfito.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/resma-papel-sulfito.webp" alt="Imagen de galería 14"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-23.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-23.webp" alt="Imagen de galería 15"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/bolsas-fondo-americano-1.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/bolsas-fondo-americano-1.webp" alt="Imagen de galería 16"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-24-1.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-24-1.webp" alt="Imagen de galería 17"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-24.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-24.webp" alt="Imagen de galería 18"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/arrangement-dirty-dumped-objects-scaled.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/arrangement-dirty-dumped-objects-scaled.webp" alt="Imagen de galería 19"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-10-31-a-las-13.20.07_15e03e7e-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-10-31-a-las-13.20.07_15e03e7e-COMPRIMIDA.webp" alt="Imagen de galería 20"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-10-31-a-las-13.17.39_1967a1b4.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-10-31-a-las-13.17.39_1967a1b4.webp" alt="Imagen de galería 21"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-10-31-a-las-11.35.51_2cda5c72-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-10-31-a-las-11.35.51_2cda5c72-COMPRIMIDA.webp" alt="Imagen de galería 22"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Papel-Color.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Papel-Color.webp" alt="Imagen de galería 23"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Papel-Color-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Papel-Color-COMPRIMIDA.webp" alt="Imagen de galería 24"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-papel-Blanco-2-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-papel-Blanco-2-COMPRIMIDA.webp" alt="Imagen de galería 25"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Nylon-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Nylon-COMPRIMIDA.webp" alt="Imagen de galería 26"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-carton-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-carton-COMPRIMIDA.webp" alt="Imagen de galería 27"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/compactador_estacionario_para_residuos_2-1-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/compactador_estacionario_para_residuos_2-1-COMPRIMIDA.webp" alt="Imagen de galería 28"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.25-AM-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.25-AM-COMPRIMIDA.webp" alt="Imagen de galería 29"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.23-AM-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.23-AM-COMPRIMIDA.webp" alt="Imagen de galería 30"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.23-AM-1-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.23-AM-1-COMPRIMIDA.webp" alt="Imagen de galería 31"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.22-AM-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.22-AM-COMPRIMIDA.webp" alt="Imagen de galería 32"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.22-AM-1-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.22-AM-1-COMPRIMIDA.webp" alt="Imagen de galería 33"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.21-AM-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.21-AM-COMPRIMIDA.webp" alt="Imagen de galería 34"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.21-AM-3-COMPRIMIDA.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-29-at-7.37.21-AM-3-COMPRIMIDA.webp" alt="Imagen de galería 35"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/6.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/6.jpg" alt="Imagen de galería 36"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/5.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/5.jpg" alt="Imagen de galería 37"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/4.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/4.jpg" alt="Imagen de galería 38"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/3-2.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/3-2.jpg" alt="Imagen de galería 39"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/2-3.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/2-3.jpg" alt="Imagen de galería 40"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/1-2.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/1-2.jpg" alt="Imagen de galería 41"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Papel-Color.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Papel-Color.jpg" alt="Imagen de galería 42"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-papel-Blanco-2.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-papel-Blanco-2.jpg" alt="Imagen de galería 43"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Nylon.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-Nylon.jpg" alt="Imagen de galería 44"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-carton.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Fardos-de-carton.jpg" alt="Imagen de galería 45"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/FARDOS-DE-ALUMINIO_.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/FARDOS-DE-ALUMINIO_.jpg" alt="Imagen de galería 46"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-23.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Diseno-sin-titulo-23.png" alt="Imagen de galería 47"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Bolsas-PapelNatural-600x482-Photoroom-e1730743823172.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Bolsas-PapelNatural-600x482-Photoroom-e1730743823172.png" alt="Imagen de galería 48"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/Bolsas-PapelNatural-600x482-1.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/Bolsas-PapelNatural-600x482-1.jpg" alt="Imagen de galería 49"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/4.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/4.png" alt="Imagen de galería 50"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/8.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/8.png" alt="Imagen de galería 51"></a>
+                    <a href="https" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/7.png" alt="Imagen de galería 52"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/6.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/6.png" alt="Imagen de galería 53"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/5.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/5.png" alt="Imagen de galería 54"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/3-1.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/3-1.jpg" alt="Imagen de galería 55"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/2-2.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/2-2.jpg" alt="Imagen de galería 56"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/1-1.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/1-1.jpg" alt="Imagen de galería 57"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/3.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/3.png" alt="Imagen de galería 58"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/2.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/2.png" alt="Imagen de galería 59"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/11/1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/11/1.png" alt="Imagen de galería 60"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/cardboard-boxes-stored-scaled.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/cardboard-boxes-stored-scaled.webp" alt="Imagen de galería 61"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/newspaper-strips-messy-arrangement-scaled.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/newspaper-strips-messy-arrangement-scaled.webp" alt="Imagen de galería 62"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/arrangement-dirty-dumped-objects-scaled.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/arrangement-dirty-dumped-objects-scaled.webp" alt="Imagen de galería 63"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/4-1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/4-1.png" alt="Imagen de galería 64"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/3-1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/3-1.png" alt="Imagen de galería 65"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/2-1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/2-1.png" alt="Imagen de galería 66"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/1-1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/1-1.png" alt="Imagen de galería 67"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/4.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/4.png" alt="Imagen de galería 68"></a>
+                    <a href="httpsD_NQ_NP_858991-MLA48308879968_112021-O-1.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/3.png" alt="Imagen de galería 69"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/2.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/2.png" alt="Imagen de galería 70"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/1.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/1.png" alt="Imagen de galería 71"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-13.17.39_1967a1b4-e1730397055130.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-13.17.39_1967a1b4-e1730397055130.jpg" alt="Imagen de galería 72"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-13.20.07_15e03e7e-COMPRIMIDA-1-e1730396808602.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-13.20.07_15e03e7e-COMPRIMIDA-1-e1730396808602.jpg" alt="Imagen de galería 73"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.21-AM-3-COMPRIMIDA.jpeg" class="gallery-item"><img src="httpsD_NQ_NP_858991-MLA48308879968_112021-O-1.webp" alt="Imagen de galería 74"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.21-AM-2-COMPRIMIDA.jpeg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.21-AM-2-COMPRIMIDA.jpeg" alt="Imagen de galería 75"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-13.20.07_15e03e7e-COMPRIMIDA-e1730395577774.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-13.20.07_15e03e7e-COMPRIMIDA-e1730395577774.jpg" alt="Imagen de galería 76"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-11.35.51_2cda5c72-COMPRIMIDA-e1730396929550.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Imagen-de-WhatsApp-2024-10-31-a-las-11.35.51_2cda5c72-COMPRIMIDA-e1730396929550.jpg" alt="Imagen de galería 77"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Fardos-de-Papel-Color-COMPRIMIDA.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Fardos-de-Papel-Color-COMPRIMIDA.jpg" alt="Imagen de galería 78"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Fardos-de-papel-Blanco-2-COMPRIMIDA.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Fardos-de-papel-Blanco-2-COMPRIMIDA.jpg" alt="Imagen de galería 79"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Fardos-de-Nylon-COMPRIMIDA.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Fardos-de-Nylon-COMPRIMIDA.jpg" alt="Imagen de galería 80"></a>
+                    <a href="httpsD_NQ_NP_858991-MLA48308879968_112021-O-1.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Fardos-de-carton-COMPRIMIDA.jpg" alt="Imagen de galería 81"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/compactador_estacionario_para_residuos_2-1-COMPRIMIDA.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/compactador_estacionario_para_residuos_2-1-COMPRIMIDA.jpg" alt="Imagen de galería 82"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.25-AM-COMPRIMIDA.jpeg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.25-AM-COMPRIMIDA.jpeg" alt="Imagen de galería 83"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.23-AM-COMPRIMIDA.jpeg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.23-AM-COMPRIMIDA.jpeg" alt="Imagen de galería 84"></a>
+                    <a href="httpsD_NQ_NP_858991-MLA48308879968_112021-O-1.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.23-AM-1-COMPRIMIDA.jpeg" alt="Imagen de galería 85"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.22-AM-COMPRIMIDA.jpeg" class="gallery-item"><img src="httpsD_NQ_NP_858991-MLA48308879968_112021-O-1.webp" alt="Imagen de galería 86"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.22-AM-1-COMPRIMIDA.jpeg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.22-AM-1-COMPRIMIDA.jpeg" alt="Imagen de galería 87"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.21-AM-COMPRIMIDA.jpeg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.21-AM-COMPRIMIDA.jpeg" alt="Imagen de galería 88"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/Dual-Ring@1x-1.0s-200px-200px.gif" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/Dual-Ring@1x-1.0s-200px-200px.gif" alt="Imagen de galería 89"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/home-slide-03_bck-100x50-1.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/home-slide-03_bck-100x50-1.jpg" alt="Imagen de galería 90"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/recycling-concept-flat-lay-1-scaled.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/recycling-concept-flat-lay-1-scaled.jpg" alt="Imagen de galería 91"></a>
+                    <a href="https" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/recycling-concept-flat-lay-scaled.jpg" alt="Imagen de galería 92"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/arrangement-dirty-dumped-objects-scaled.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/arrangement-dirty-dumped-objects-scaled.jpg" alt="Imagen de galería 93"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.23-AM-1.jpeg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.23-AM-1.jpeg" alt="Imagen de galería 94"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.22-AM-1.jpeg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-29-at-7.37.22-AM-1.jpeg" alt="Imagen de galería 95"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/footer-negro.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/footer-negro.jpg" alt="Imagen de galería 96"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/handyman_11.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman_11.png" alt="Imagen de galería 97"></a>
+                    <a href="https" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman_15.png" alt="Imagen de galería 98"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/handyman-07.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-07.jpg" alt="Imagen de galería 99"></a>
+                    <a href="https" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-13.jpg" alt="Imagen de galería 100"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/handyman-12.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-12.jpg" alt="Imagen de galería 101"></a>
+                    <a href="https" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-11.jpg" alt="Imagen de galería 102"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/handyman-10.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-10.jpg" alt="Imagen de galería 103"></a>
+                    <a href="https" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-06.jpg" alt="Imagen de galería 104"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/handyman-09.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-09.jpg" alt="Imagen de galería 105"></a>
+                    <a href="https" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/handyman-05.jpg" alt="Imagen de galería 106"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/berretta-Photoroom-e1730305309140.png" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/berretta-Photoroom-e1730305309140.png" alt="Imagen de galería 107"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/cropped-berretta.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/cropped-berretta.jpg" alt="Imagen de galería 108"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/berretta-e1730305073446.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/berretta-e1730305073446.jpg" alt="Imagen de galería 109"></a>
+                    <a href="httpsD_NQ_NP_858991-MLA48308879968_112021-O-1.webp" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/cropped-cardboard-boxes-stored-scaled-1.jpg" alt="Imagen de galería 110"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/newspaper-strips-messy-arrangement-scaled.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/newspaper-strips-messy-arrangement-scaled.jpg" alt="Imagen de galería 111"></a>
+                    <a href="httpsDo-not-disturb-sign-hanging-on-door-handle.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/plastic-garbage-conveyor-belt-waste-recycling-factory-workers-background-scaled.jpg" alt="Imagen de galería 112"></a>
+                    <a href="https://berrettasa.com/wp-content/uploads/2024/10/crane-grab-scrap-scaled.jpg" class="gallery-item"><img src="https://berrettasa.com/wp-content/uploads/2024/10/crane-grab-scrap-scaled.jpg" alt="Imagen de galería 113"></a>
+                    <a href="
