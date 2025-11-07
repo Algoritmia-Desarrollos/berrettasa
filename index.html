@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Carlos D. Berretta e Hijo S.A. - Home</title>
+    
+    
+    <meta name="description" content="Servicio integral de recolección de materiales reciclables en Rosario. Jaulas, volquetes, cartón, papel, PET, y más.">
+</head>
+<style>
+    /*
+ * ===============================================
+ * 1. VARIABLES GLOBALES Y ESTILO BASE (Estilo Moderno)
+ * ===============================================
+ */
+
+/* Importa la fuente */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    /* Paleta de Colores (Adaptada a Berretta) */
+    --color-fondo: #FFFFFF;
+    --color-tarjeta: #F5F5F5;
+    --border-color: #EEEEEE;
+    --color-texto-principal: #1e1e1e;
+    --color-texto-secundario: #555555;
+    
+    /* Colores Globales (Naranja de Berretta) */
+    --color-acento: #f37021; 
+
+    /* Paleta para Secciones Oscuras (ej. Footer, CTA) */
+    --color-fondo-dark: #111111;
+    --color-texto-principal-dark: #FFFFFF;
+    --color-texto-secundario-dark: #A3A3A3;
+    --border-color-dark: #222222;
+
+    /* Fuente (Pila moderna) */
+    --font-principal: "proxima-nova", "system-ui", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Geometría */
+    --border-radius: 16px; /* Bordes suaves modernos */
+}
+
+/*
+ * ===============================================
+ * 2. RESET Y BASE
+ * ===============================================
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    overflow-x: hidden;
+    font-weight: 400; /* Regular */
+    line-height: 1.6;
+    /* Sacamos el padding-top porque el header de WP lo manejará */
+}
+
+/*
+ * ===============================================
+ * 3. PLACEHOLDERS (Fondo Verde) Y TIPOGRAFÍA
+ * ===============================================
+ */
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius);
+    
+    /* --- PLACEHOLDER VERDE SOLICITADO --- */
+    background-color: #a5d6a7; /* Un verde placeholder claro */
+    min-height: 100px; /* Asegura que los placeholders vacíos tengan altura */
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex; /* Para centrar el alt text (si lo pones) */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    /* --- FIN DEL PLACEHOLDER --- */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Bold */
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    color: var(--color-texto-principal);
+}
+
+/* --- CORRECCIÓN MÓVIL 1: H1 más chico --- */
+h1 { font-size: clamp(2.2rem, 7vw, 4.5rem); line-height: 1.1; } 
+h2 { font-size: clamp(2rem, 5vw, 2.5rem); line-height: 1.2; text-align: center; margin-bottom: 40px;}
+/* --- CORRECCIÓN MÓVIL 3: H3 más chico --- */
+h3 { font-size: 1.35rem; }
+
+p {
+    color: var(--color-texto-secundario);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 400; /* Regular */
+}
+
+a {
+    color: var(--color-acento);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+ul { list-style: none; }
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0; 
+    border-bottom: 1px solid var(--border-color);
+}
+section:first-child {
+    padding-top: 0;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section-title::after { display: none; } /* Sin línea naranja */
+
+/*
+ * ===============================================
+ * 4. BOTONES (Estilo CTA)
+ * ===============================================
+ */
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px; /* Estilo "píldora" */
+    text-decoration: none;
+    font-weight: 700; /* Bold */
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--color-acento);
+    color: var(--color-fondo); /* Texto blanco sobre naranja */
+}
+
+.btn-primary:hover {
+    background-color: var(--color-texto-principal); /* Fondo negro en hover */
+    color: var(--color-fondo); /* Texto blanco */
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    border: 1px solid var(--color-texto-principal);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-texto-principal);
+    color: var(--color-fondo);
+    transform: scale(1.05);
+}
+
+/*
+ * ===============================================
+ * 5. SECCIÓN HERO (Con Video Placeholder)
+ * ===============================================
+ */
+
+.hero-section {
+    position: relative;
+    min-height: 90vh; /* Altura generosa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 0;
+    overflow: hidden; 
+    color: var(--color-texto-principal-dark); /* Texto blanco */
+    border-bottom: none;
+}
+
+.hero-video-background {
+    position: absolute; top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: 1;
+    transform: translate(-50%, -50%); 
+    
+    /* --- PLACEHOLDER VERDE (OSCURO) PARA VIDEO --- */
+    background-color: #004d40; 
+    border-radius: 0; /* Sin bordes en el fondo */
+}
+
+.hero-video-background video {
+    display: none; /* Oculta la etiqueta para ver el placeholder */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-section::after { /* Overlay */
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative; z-index: 3;
+    max-width: 800px;
+}
+
+.hero-title {
+    color: var(--color-texto-principal-dark);
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    color: var(--color-texto-principal-dark);
+    font-weight: 400;
+}
+
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Botón CTA del Hero (Estilo invertido) */
+.hero-cta .btn-primary {
+    background-color: var(--color-fondo); /* Blanco */
+    color: var(--color-texto-principal); /* Negro */
+}
+.hero-cta .btn-primary:hover {
+    background-color: var(--color-acento); /* Naranja */
+}
+.hero-cta .btn-secondary {
+    background-color: transparent;
+    color: var(--color-fondo);
+    border: 1px solid var(--color-fondo);
+}
+.hero-cta .btn-secondary:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+}
+
+/*
+ * ===============================================
+ * 6. SECCIÓN CTA (Contacto Rápido)
+ * ===============================================
+ */
+
+.cta-section {
+    background-color: var(--color-fondo-dark); /* Fondo oscuro */
+    color: var(--color-texto-principal-dark);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.cta-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.cta-section h3 {
+    color: var(--color-texto-principal-dark);
+    margin-bottom: 10px;
+}
+
+.cta-section p {
+    color: var(--color-texto-secundario-dark);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.cta-section .cta-info {
+    width: 100%;
+}
+
+.cta-section .cta-info p {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-fondo); /* Blanco más puro para los números */
+    margin-bottom: 10px;
+}
+
+.cta-section .cta-info .btn {
+    background-color: var(--color-acento);
+    color: var(--color-fondo-dark); /* Texto negro sobre naranja */
+    margin-top: 10px;
+    /* --- CORRECCIÓN MÓVIL 2: Botón full-width --- */
+    width: 100%;
+}
+
+.cta-section .cta-info .btn:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+}
+
+/*
+ * ===============================================
+ * 7. FEATURES (Por qué elegirnos)
+ * ===============================================
+ */
+
+.features-section {
+    background-color: var(--color-tarjeta); /* Fondo gris claro */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna en móvil */
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: var(--color-fondo);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+}
+
+/*
+ * ===============================================
+ * 8. SERVICIOS Y PRODUCTOS (Cards)
+ * ===============================================
+ */
+
+.services-container,
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna en móvil */
+    gap: 20px;
+}
+
+.service-card,
+.product-card {
+    background-color: var(--color-fondo);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover,
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+.service-image,
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--border-radius) var(--border-radius) 0 0; /* Solo arriba */
+}
+
+.service-content,
+.product-card h4 {
+    padding: 25px;
+}
+
+.service-content h3 {
+    color: var(--color-acento);
+}
+
+/*
+ * ===============================================
+ * 9. TABS (Estilo para Productos)
+ * ===============================================
+ */
+
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tab-buttons {
+    display: flex;
+    list-style: none;
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    margin-bottom: 30px;
+    overflow-x: auto; /* Para que los tabs no se rompan en móvil */
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-family: var(--font-principal);
+    font-size: 1rem;
+    color: var(--color-texto-secundario);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px; /* Solapa el borde */
+    white-space: nowrap; /* Evita que el texto se parta */
+}
+
+.tab-button:first-child { padding-left: 0; }
+
+.tab-button.active { /* CLASE JS */
+    color: var(--color-texto-principal);
+    border-bottom-color: var(--color-texto-principal);
+}
+
+.tab-content { display: none; width: 100%;}
+.tab-content.active { display: block; animation: fadeIn 0.5s; } /* CLASE JS */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.materials-list {
+    list-style: disc;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+
+/*
+ * ===============================================
+ * 10. ACORDEÓN (FAQ y Servicios)
+ * ===============================================
+ */
+
+.accordion-item {
+    border-bottom: 1px solid var(--border-color);
+}
+.accordion-item:last-child { border-bottom: none; }
+
+.accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    text-align: left;
+    font-family: var(--font-principal);
+    font-size: 1.25rem;
+    font-weight: 600; /* Semi-bold */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.accordion-header:hover {
+    color: var(--color-acento);
+}
+
+.accordion-header::after {
+    content: '+';
+    font-size: 1.8rem;
+    color: var(--color-acento);
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-header::after { /* CLASE JS */
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordion-content p {
+    padding: 0 0 20px 0;
+}
+
+/*
+ * ===============================================
+ * 11. FORMULARIO DE CONTACTO
+ * ===============================================
+ */
+
+.contact-section .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-principal);
+    font-size: 1rem;
+    background-color: var(--color-tarjeta);
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-acento);
+    background-color: var(--color-fondo);
+    box-shadow: 0 0 5px rgba(243, 112, 33, 0.3);
+}
+
+/*
+ * ===============================================
+ * 12. TARJETAS DE PRODUCTO CLIQUEABLES
+ * ===============================================
+ */
+a.product-card {
+    text-decoration: none;
+    color: var(--color-texto-principal);
+}
+a.product-card:hover {
+    color: var(--color-texto-principal);
+}
+a.product-card h4 {
+    color: var(--color-texto-principal);
+    transition: color 0.3s ease;
+}
+a.product-card:hover h4 {
+    color: var(--color-acento);
+}
+
+/*
+ * ===============================================
+ * 13. MEDIA QUERIES (TABLET Y SUPERIOR)
+ * ===============================================
+ */
+
+@media (min-width: 768px) {
+    
+    .hero-cta {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    /* CTA Rápido */
+    .cta-section .container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+    .cta-section .cta-content {
+        flex-basis: 50%;
+    }
+    .cta-section .cta-content p {
+        margin-bottom: 0;
+    }
+    .cta-section .cta-info {
+        flex-basis: 50%;
+        text-align: right;
+    }
+    .cta-section .cta-info p {
+        margin-bottom: 10px;
+    }
+    /* --- CORRECCIÓN MÓVIL 2: Botón vuelve a la normalidad --- */
+    .cta-section .cta-info .btn {
+        width: auto;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-container,
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-section .container {
+        grid-template-columns: 1fr 1fr;
+        align-items: flex-start;
+    }
+}
+
+/*
+ * ===============================================
+ * 14. MEDIA QUERIES (DESKTOP)
+ * ===============================================
+ */
+
+@media (min-width: 1024px) {
+
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas como en tu captura */
+    }
+}
+</style>
+<body>
+
+    <main class="berretta-content">
+
+        <section id="inicio" class="hero-section">
+            <div class="hero-video-background">
+                <video autoplay muted loop playsinline src="video/camion-fondo.mp4"></video>
+                Fondo de Video Hero
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">RECICLAJE Y GESTIÓN INTEGRAL</h1>
+                <p class="hero-subtitle">Cartón – Papel Blanco y Color – PET Cristal o Verde – PELD (Nylon) – Aluminio – Otros</p>
+                <div class="hero-cta">
+                    <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                    <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta-contacto" class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h3>¿Necesita una solución ahora?</h3>
+                    <p>Contáctenos para una cotización y coordinación inmediata.</p>
+                </div>
+                <div class="cta-info">
+                    <p><strong>CEL:</strong> +54 9 341 500 3330 // +54 9 341 500 3329</p>
+                    <p><strong>TEL:</strong> 456-8555 // 457-5818 // 458-4062</p>
+                    <a href="#contacto" class="btn btn-primary">Formulario de Contacto</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="services-section">
+            <div class="container">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p style="text-align: center; max-width: 800px; margin: -20px auto 40px auto;">Ofrecemos un servicio integral de recolección de materiales reciclables, diseñado para facilitar la gestión de residuos tanto para particulares como para empresas.</p>
+                
+                <div class="services-container">
+                    <article class="service-card">
+                        <img src="img/servicio-jaulas.jpg" alt="Recolección en Jaulas" class="service-image">
+                        <div class="service-content">
+                            <h3>Recolección en Jaulas</h3>
+                            <p>Disponemos de jaulas para la recolección de materiales reciclables en volúmenes moderados.</p>
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Coordinación de Retiro</button>
+                                    <div class="accordion-content">
+                                        <p>Cuando la jaula esté llena, solo debes contactarnos y programamos su retiro.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Sustitución de Jaulas</button>
+                                    <div class="accordion-content">
+                                        <p>Realizamos el cambio de la jaula llena por una vacía para que el proceso de recolección sea continuo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <img src="img/servicio-volquetes.jpg" alt="Recolección en Volquetes" class="service-image">
+                        <div class="service-content">
+                            <h3>Recolección en Volquetes (Sistema Roll Off/Roll On)</h3>
+                            <p>Para la gestión de grandes volúmenes, utilizamos volquetes con sistema roll off/roll on.</p>
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Colocación y Llenado</button>
+                                    <div class="accordion-content">
+                                        <p>Instalamos un volquete de gran capacidad en el lugar indicado para que puedas depositar tus materiales.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Retiro y Sustitución</button>
+                                    <div class="accordion-content">
+                                        <p>Cuando el volquete esté lleno, nos contactas y coordinamos su retiro. Podemos sustituirlo por otro vacío.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <img src="img/servicio-fardos.jpg" alt="Retiro de Fardos" class="service-image">
+                        <div class="service-content">
+                            <h3>Retiro de Fardos en Carrocería Playa</h3>
+                            <p>Para empresas que generan fardos, ofrecemos recolección con volquetes playos, garantizando eficiencia.</p>
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Carga de Fardos</button>
+                                    <div class="accordion-content">
+                                        <p>Se carga el volquete playo con fardos de materiales reciclables, facilitando su transporte.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Transporte y Coordinación</button>
+                                    <div class="accordion-content">
+                                        <p>Cuando tenga los fardos listos, solo necesita contactarnos para programar su retiro.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <img src="img/servicio-compactadoras.jpg" alt="Compactadoras de Cartón" class="service-image">
+                        <div class="service-content">
+                            <h3>Compactadoras de Cartón de Última Tecnología</h3>
+                            <p>Si tu empresa maneja grandes cantidades de cartón, contamos con compactadoras que optimizan el espacio.</p>
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Compactación Automática</button>
+                                    <div class="accordion-content">
+                                        <p>La compactadora realiza el prensado del cartón, reduciendo significativamente su volumen.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header">Extracción del Volquete</button>
+                                    <div class="accordion-content">
+                                        <p>Cuando el volquete esté lleno, nos contactas y coordinamos su cambio por otro vacío.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="empresa" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Por qué elegirnos</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>70 Años de Experiencia</h3>
+                        <p>Tantos años en el rubro nos avalan y nos distinguen del resto de las empresas de recupero de rezagos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Sistema de Calidad</h3>
+                        <p>Servicios de tratamientos de residuos bajo un sistema de calidad, medio ambiente, salud ocupacional y seguridad.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Equipamiento e Infraestructura</h3>
+                        <p>Poseemos el equipamiento y la estructura necesaria para cumplir y satisfacer al cliente en tiempo y forma.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Certificados</h3>
+                        <p>Contamos con todos los certificados correspondientes para garantizar un óptimo trabajo y disposición final.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Asistencia Técnica</h3>
+                        <p>Solución para empresas sin estructura profesional. Pueden evacuar cualquier duda con nuestro equipo.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Capacitación</h3>
+                        <p>Formación sobre el manejo de nuestras máquinas dejadas en comodato y normas de Seguridad e Higiene.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="productos" class="products-section">
+            <div class="container">
+                <h2 class="section-title">Productos y Materiales</h2>
+                
+                <div class="tabs-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="productos-reciclados">Productos Reciclados</button>
+                        <button class="tab-button" data-tab="materiales-venta">Materiales que Vendemos</button>
+                    </div>
+
+                    <div id="productos-reciclados" class="tab-content active">
+                        <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">Ofrecemos productos terminados. Todos pueden ser impresos o simples (Papel Sulfito, Encolado o Kraft. Consultar por otro material).</p>
+                        <div class="product-grid">
+                            <a href="#" class="product-card">
+                                <img src="img/prod-bolsa-americano.jpg" alt="Bolsas de papel Fondo americano">
+                                <h4>Bolsas de papel Fondo americano</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/prod-bolsa-cuadrado.jpg" alt="Bolsas de papel Fondo cuadrado">
+                                <h4>Bolsas de papel Fondo cuadrado</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/prod-resmas.jpg" alt="Resmas de papel">
+                                <h4>Resmas de papel</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/prod-bobinas.jpg" alt="Bobinas de papel">
+                                <h4>Bobinas de papel</h4>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="materiales-venta" class="tab-content">
+                        <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">Comercializamos materiales reciclables en fardos listos para la industria:</p>
+                        <div class="product-grid">
+                            <a href="#" class="product-card">
+                                <img src="img/mat-fardo-blanco.jpg" alt="Fardos de papel blanco">
+                                <h4>Fardos de papel blanco</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/mat-fardo-color.jpg" alt="Fardos de papel color">
+                                <h4>Fardos de papel color</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/mat-fardo-carton.jpg" alt="Fardos de Cartón">
+                                <h4>Fardos de Cartón</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/mat-fardo-nylon.jpg" alt="Fardos de Nylon">
+                                <h4>Fardos de Nylon</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/mat-fardo-pet.jpg" alt="Fardos de Pet cristal y Pet verde">
+                                <h4>Fardos de Pet</h4>
+                            </a>
+                            <a href="#" class="product-card">
+                                <img src="img/mat-fardo-aluminio.jpg" alt="Fardos de aluminio">
+                                <h4>Fardos de aluminio</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <div class="container" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                
+                <div class="accordion-large">
+                    <div class="accordion-item">
+                        <button class="accordion-header">¿Cómo funciona el servicio?</button>
+                        <div class="accordion-content">
+                            <p>El proceso es simple y eficiente. Tanto empresas como particulares pueden ponerse en contacto con nosotros. Nuestro equipo evaluará sus necesidades y ofrecerá la mejor solución (volquete, jaula o compactadora), facilitando un servicio ágil y efectivo.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">¿Ofrecen Certificados de Disposición Final?</button>
+                        <div class="accordion-content">
+                            <p>Sí. Para quienes lo requieran, ofrecemos un Certificado de Disposición Final. Este documento garantiza que los materiales han sido gestionados de manera adecuada y conforme a la normativa vigente.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">¿Cuándo solicitar el cambio o retiro del contenedor?</button>
+                        <div class="accordion-content">
+                            <p>Deberá solicitar el cambio o retiro del contenedor tan pronto como esté lleno. Contáctenos y estaremos encantados de coordinar el servicio para asegurar una recolección oportuna y eficiente.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">¿Cuál es nuestra área de cobertura?</button>
+                        <div class="accordion-content">
+                            <p>Nuestra zona de cobertura incluye la ciudad de Rosario y las ciudades cercanas. Si se encuentra fuera de estas áreas, contáctenos por teléfono; la posibilidad de servicio dependerá de la cantidad de material.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">¿Puedo llevar mercadería al depósito?</button>
+                        <div class="accordion-content">
+                            <p>Sí, puedes traer mercadería a nuestro depósito de manera particular. El peso mínimo requerido para la recepción es de 30 kg. Por favor, asegúrate de cumplir con este requisito.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">¿Ofrecen servicio a particulares o solo a empresas?</button>
+                        <div class="accordion-content">
+                            <p>Sí, ofrecemos nuestros servicios tanto a particulares como a empresas. Nos adaptamos a las necesidades de cada cliente.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">¿Cómo debo preparar los materiales reciclables?</button>
+                        <div class="accordion-content">
+                            <p>Es importante que los materiales estén secos y libres de contaminantes (sin piedras, residuos orgánicos, etc.). Deben estar limpios, ya que de lo contrario, podríamos aplicar un descuento en el valor del material.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <div class="contact-form-container">
+                    <h2 class="section-title" style="text-align: left;">Solicite un presupuesto</h2>
+                    <p>Complete nuestro formulario de contacto y le responderemos a la brevedad.</p>
+                    <form action="enviar.php" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Consulta</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-container">
+                    <h3 class="contact-info-title">Datos de Contacto</h3>
+                    <p><strong>Carlos D. Berretta e Hijo S.A.</strong></p>
+                    <p>Av. Pte. Perón 7621, Rosario, Sta. Fe, Argentina</p>
+                    <p><strong>Cel:</strong> +54 9 341 500 3330</p>
+                    <p><strong>Cel:</strong> +54 9 341 500 3329</p>
+                    <p><strong>Tel:</strong> 456-8555 / 457-5818 / 458-4062</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+<script>
+    /*
+ * ===============================================
+ * SCRIPT PARA BERRETTA S.A.
+ * Desarrollado por Algoritmia Desarrollos
+ *
+ * 1. Acordeones (Servicios y FAQ)
+ * 2. Pestañas (Tabs de Productos)
+ * ===============================================
+ */
+
+// Esperamos a que todo el HTML esté cargado antes de ejecutar el JS
+document.addEventListener("DOMContentLoaded", () => {
+
+    /**
+     * 1. ACORDEONES (SERVICIOS Y FAQ)
+     * Expande y contrae los items del acordeón.
+     */
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    accordionItems.forEach(item => {
+        const header = item.querySelector(".accordion-header");
+        const content = item.querySelector(".accordion-content");
+
+        if (header && content) {
+            header.addEventListener("click", () => {
+                // Alterna la clase 'active' en el item padre
+                item.classList.toggle("active");
+
+                if (item.classList.contains("active")) {
+                    // Si se está abriendo, asigna la altura del contenido
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    // Si se está cerrando, vuelve a null (o "0px")
+                    content.style.maxHeight = null;
+                }
+            });
+        }
+    });
+
+    /**
+     * 2. PESTAÑAS (TABS DE PRODUCTOS)
+     * Cambia entre "Productos Reciclados" y "Materiales que Vendemos".
+     */
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    if (tabButtons.length > 0 && tabContents.length > 0) {
+
+        tabButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                
+                // Desactivamos TODOS los botones y contenidos
+                tabButtons.forEach(btn => btn.classList.remove("active"));
+                tabContents.forEach(content => content.classList.remove("active"));
+
+                // Activamos el botón clickeado
+                button.classList.add("active");
+                
+                // Activamos el contenido correspondiente
+                const targetId = button.dataset.tab; // ej: "productos-reciclados"
+                const targetContent = document.getElementById(targetId);
+                
+                if (targetContent) {
+                    targetContent.classList.add("active");
+                }
+            });
+        });
+        
+        // Asegurarse de que el primero esté activo al cargar
+        if (!document.querySelector(".tab-button.active")) {
+            tabButtons[0].classList.add("active");
+            tabContents[0].classList.add("active");
+        }
+    }
+
+});
+</script>
+</body>
+</html>

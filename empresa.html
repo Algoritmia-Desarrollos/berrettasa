@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Empresa - Carlos D. Berretta e Hijo S.A.</title>
+    
+    <meta name="description" content="Con más de 70 años de experiencia en el reciclaje y recolección de materiales reciclables, conocé nuestra historia.">
+    
+    <style>
+        /* --- VARIABLES GLOBALES Y ESTILO BASE --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        :root {
+            --color-fondo: #FFFFFF;
+            --color-tarjeta: #F5F5F5;
+            --border-color: #EEEEEE;
+            --color-texto-principal: #1e1e1e;
+            --color-texto-secundario: #555555;
+            --color-acento: #f37021; 
+            --color-fondo-dark: #111111;
+            --color-texto-principal-dark: #FFFFFF;
+            --color-texto-secundario-dark: #A3A3A3;
+            --border-color-dark: #222222;
+            --font-principal: "proxima-nova", "system-ui", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --border-radius: 16px;
+        }
+
+        /* --- RESET Y BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        body {
+            font-family: var(--font-principal);
+            background-color: var(--color-fondo);
+            color: var(--color-texto-principal);
+            overflow-x: hidden;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* --- PLACEHOLDERS Y TIPOGRAFÍA --- */
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+            background-color: #a5d6a7; /* Verde placeholder */
+            min-height: 100px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            color: var(--color-texto-principal);
+        }
+        /* Ajuste móvil: h1 y h2 más chicos */
+        h1 { font-size: clamp(2.2rem, 7vw, 4.0rem); line-height: 1.1; } 
+        h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); line-height: 1.2; margin-bottom: 15px;}
+        h3 { font-size: 1.35rem; }
+
+        p {
+            color: var(--color-texto-secundario);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        p.lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-texto-principal);
+        }
+        a {
+            color: var(--color-acento);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        ul { list-style: none; }
+        .container {
+            width: 90%;
+            max-width: 1100px; /* Un poco más angosto para lectura */
+            margin: 0 auto;
+        }
+        section {
+            padding: 80px 0; 
+            border-bottom: 1px solid var(--border-color);
+        }
+        section:first-child {
+            padding-top: 0;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* --- BOTONES (Estilo CTA) --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: var(--color-acento);
+            color: var(--color-fondo);
+        }
+        .btn-primary:hover {
+            background-color: var(--color-texto-principal);
+            color: var(--color-fondo);
+            transform: scale(1.05);
+        }
+
+        /* --- ESTILOS DE PÁGINA "EMPRESA" --- */
+
+        /* 1. Hero de Página (Título) */
+        .page-hero-section {
+            background-color: var(--color-fondo-dark);
+            color: var(--color-texto-principal-dark);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .page-hero-section .container {
+            text-align: center;
+        }
+        .page-hero-section .page-subtitle {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-texto-secundario-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .page-hero-section .page-title {
+            color: var(--color-texto-principal-dark);
+            margin: 0;
+        }
+
+        /* 2. Layout de Texto e Imagen */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 columna en móvil */
+            gap: 40px;
+            align-items: center;
+        }
+        .image-content {
+            order: -1; /* Imagen arriba en móvil */
+        }
+        .image-content img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        .text-content p {
+            margin-bottom: 20px; 
+        }
+
+        /* 3. Sección "Actividad" */
+        .activity-section {
+            background-color: var(--color-tarjeta); /* Fondo gris claro */
+        }
+
+        /* 4. CTA Section (Reutilizada del Home) */
+        .cta-section {
+            background-color: var(--color-fondo-dark);
+            color: var(--color-texto-principal-dark);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .cta-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+        .cta-section h3 {
+            color: var(--color-texto-principal-dark);
+            margin-bottom: 10px;
+        }
+        .cta-section .cta-info {
+            width: 100%;
+        }
+        /* --- Corrección botón CTA en móvil --- */
+        .cta-section .cta-info .btn {
+            width: 100%;
+        }
+
+        /* --- MEDIA QUERIES (TABLET Y SUPERIOR) --- */
+        @media (min-width: 768px) {
+            .page-hero-section .container {
+                text-align: left;
+            }
+            .grid-2-col {
+                grid-template-columns: 1fr 1fr; /* 2 columnas */
+                gap: 60px;
+            }
+            .image-content {
+                order: 0; /* Orden natural en desktop */
+            }
+            /* Invertir el orden para la segunda sección (efecto zigzag) */
+            .grid-2-col.reverse-on-desktop .image-content {
+                order: 1; /* Imagen a la derecha */
+            }
+            .grid-2-col.reverse-on-desktop .text-content {
+                order: 0; /* Texto a la izquierda */
+            }
+
+            /* CTA Section */
+            .cta-section .container {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+            .cta-section .cta-content {
+                flex-basis: 70%;
+            }
+            .cta-section .cta-info {
+                flex-basis: 30%;
+                text-align: right;
+            }
+            /* --- Corrección botón CTA en tablet+ --- */
+            .cta-section .cta-info .btn {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="berretta-page-content">
+
+        <section class="page-hero-section">
+            <div class="container">
+                <span class="page-subtitle">Carlos D. Berretta e Hijo S.A.</span>
+                <h1 class="page-title">Empresa</h1>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div class="text-content">
+                        <h2>MÁS DE 70 AÑOS DE EXPERIENCIA EN RECICLAJE</h2>
+                        <p class="lead">Carlos D Berretta e hijo SA es una empresa con más de 70 años de experiencia en el reciclaje y recolección de materiales reciclables. Este extenso período de actividad ininterrumpida refleja nuestra idoneidad y compromiso en el manejo responsable de residuos, lo cual podemos avalar a través de una breve reseña histórica de nuestra trayectoria.</p>
+                        <p>Como empresa familiar, nuestros fundadores comenzaron con un pequeño negocio enfocado en la recolección y venta de materiales reciclables, que con el tiempo fue creciendo y adaptándose a las necesidades de la industria y el mercado. Inicialmente dedicados a la compra de cartón y papel reciclable, evolucionamos para ofrecer un servicio de recolección de materiales en distintas escalas.</p>
+                        <p>En 2018, ampliamos nuestro compromiso con el reciclaje al introducirnos en el rubro de la chatarra mediante la creación de la empresa Bedel Scrap SA, reforzando nuestra misión de gestión responsable de residuos.</p>
+                    </div>
+                    <div class="image-content">
+                        <img src="img/empresa-historia.jpg" alt="Planta de reciclaje de Carlos Berretta e Hijo S.A.">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="investment-section">
+            <div class="container">
+                <div class="grid-2-col reverse-on-desktop">
+                    <div class="image-content">
+                        <img src="img/empresa-tecnologia.jpg" alt="Compactadoras de cartón y volquetes roll-off">
+                    </div>
+                    <div class="text-content">
+                        <h2>Inversión y Crecimiento</h2>
+                        <p>En los años recientes, gracias a inversiones continuas en tecnología y bienes de capital, hemos mejorado nuestras capacidades operativas y ampliado nuestra gama de servicios.</p>
+                        <p>Actualmente, en Carlos D Berretta e hijo SA contamos con equipos avanzados como compactadoras de cartón y sistemas de recolección eficientes, incluyendo jaulas y volquetes con sistema roll-off/roll-on, que nos permiten gestionar grandes volúmenes de material reciclable de forma ágil y segura.</p>
+                        <p>Desde entonces, nuestros servicios han abastecido a una amplia variedad de empresas e instituciones, aportando al cuidado del medio ambiente y promoviendo una gestión de residuos responsable. Además, hemos incorporado el reciclaje de PET y PELD, ampliando así nuestro alcance y capacidad para contribuir a un futuro más sostenible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="activity-section">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div class="text-content">
+                        <h2>Nuestra actividad</h2>
+                        <p>Carlos D Berretta e hijo SA se dedica a la recolección y gestión de materiales reciclables, brindando un servicio integral que facilita el reciclaje de residuos tanto para particulares como para empresas. Nos especializamos en la recolección y procesamiento de cartón post consumo e industrial, papel, y PET en diferentes volúmenes, asegurando una gestión eficiente y sustentable de estos materiales.</p>
+                        <p>Nuestro objetivo es promover la reutilización de materiales reciclables mediante una gestión responsable y enfocada en la calidad. Para ello, hemos desarrollado una estrategia corporativa que incorpora tecnología avanzada en compactación y transporte, manteniendo siempre un compromiso firme con el cuidado del medio ambiente.</p>
+                        <p>La actividad principal de nuestra empresa consiste en la recolección y entrega eficiente de materiales reciclables en las cantidades y condiciones óptimas para su reciclado. Contamos con distintos sistemas de recolección, como jaulas y volquetes con tecnología roll off/roll on, que nos permiten adaptarnos a las necesidades de cada cliente.</p>
+                    </div>
+                    <div class="image-content">
+                        <img src="img/empresa-actividad.jpg" alt="Fardos de PET y PELD listos para reciclar">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h3>Contáctese con nosotros, estamos a su servicio</h3>
+                </div>
+                <div class="cta-info">
+                    <a href="/#contacto" class="btn btn-primary">Formulario de Contacto</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    </body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Galería - Carlos D. Berretta e Hijo S.A.</title>
+    
+    <meta name="description" content="Galería de imágenes de nuestras instalaciones, equipamiento, volquetes, jaulas y fardos de material reciclado.">
+    
+    <style>
+        /* --- VARIABLES GLOBALES Y ESTILO BASE --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        :root {
+            --color-fondo: #FFFFFF;
+            --color-tarjeta: #F5F5F5;
+            --border-color: #EEEEEE;
+            --color-texto-principal: #1e1e1e;
+            --color-texto-secundario: #555555;
+            --color-acento: #f37021; 
+            --color-fondo-dark: #111111;
+            --color-texto-principal-dark: #FFFFFF;
+            --color-texto-secundario-dark: #A3A3A3;
+            --border-color-dark: #222222;
+            --font-principal: "proxima-nova", "system-ui", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --border-radius: 16px;
+        }
+
+        /* --- RESET Y BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        body {
+            font-family: var(--font-principal);
+            background-color: var(--color-fondo);
+            color: var(--color-texto-principal);
+            overflow-x: hidden;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* --- PLACEHOLDERS Y TIPOGRAFÍA --- */
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+            background-color: #a5d6a7; /* Verde placeholder */
+            min-height: 100px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            color: var(--color-texto-principal);
+        }
+        h1 { font-size: clamp(2.2rem, 7vw, 4.0rem); line-height: 1.1; } 
+        h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); line-height: 1.2; margin-bottom: 15px;}
+
+        p {
+            color: var(--color-texto-secundario);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        a {
+            color: var(--color-acento);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px; /* Ancho completo para galería */
+            margin: 0 auto;
+        }
+        section {
+            padding: 80px 0; 
+            border-bottom: 1px solid var(--border-color);
+        }
+        section:first-child {
+            padding-top: 0;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* --- ESTILOS DE PÁGINA "GALERÍA" --- */
+
+        /* 1. Hero de Página (Título) */
+        .page-hero-section {
+            background-color: var(--color-fondo-dark);
+            color: var(--color-texto-principal-dark);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .page-hero-section .container {
+            text-align: center;
+        }
+        .page-hero-section .page-title {
+            color: var(--color-texto-principal-dark);
+            margin: 10px 0 0 0;
+        }
+        
+        /* 2. Grilla de Galería */
+        .gallery-grid {
+            display: grid;
+            /* 2 columnas en móvil */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px; /* Un gap más chico para la galería */
+        }
+        
+        .gallery-item {
+            display: block;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px; /* Altura fija para todas las miniaturas */
+            object-fit: cover;
+            border-radius: 0; /* La imagen interna no necesita radius */
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 3. Estilos del Lightbox (Modal) */
+        .lightbox {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex; /* Se muestra con JS */
+        }
+        
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px; /* Un radius más sutil */
+            background-color: transparent; /* Sin fondo verde */
+            min-height: auto; /* Anula el min-height del placeholder */
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .lightbox-close:hover {
+            color: #bbb;
+        }
+
+        /* Flechas de Navegación */
+        .lightbox-prev,
+        .lightbox-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .lightbox-prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .lightbox-next {
+            right: 0;
+            border-radius: 0 3px 3px 0;
+        }
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- MEDIA QUERIES (TABLET Y SUPERIOR) --- */
+        @media (min-width: 768px) {
+            .page-hero-section .container {
+                text-align: left;
+            }
+            .gallery-grid {
+                /* 3 columnas en tablet */
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-item img {
+                height: 250px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                /* 4 columnas en desktop */
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="berretta-page-content">
+
+        <section class="page-hero-section">
+            <div class="container">
+                <h1 class="page-title">Galería</h1>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-grid">
+                    <a href="img/placeholder-grande-1.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-1.jpg" alt="Descripción de la imagen 1">
+                    </a>
+                    <a href="img/placeholder-grande-2.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-2.jpg" alt="Descripción de la imagen 2">
+                    </a>
+                    <a href="img/placeholder-grande-3.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-3.jpg" alt="Descripción de la imagen 3">
+                    </a>
+                    <a href="img/placeholder-grande-4.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-4.jpg" alt="Descripción de la imagen 4">
+                    </a>
+                    
+                    <a href="img/placeholder-grande-5.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-5.jpg" alt="Descripción de la imagen 5">
+                    </a>
+                    <a href="img/placeholder-grande-6.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-6.jpg" alt="Descripción de la imagen 6">
+                    </a>
+                    <a href="img/placeholder-grande-7.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-7.jpg" alt="Descripción de la imagen 7">
+                    </a>
+                    <a href="img/placeholder-grande-8.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-8.jpg" alt="Descripción de la imagen 8">
+                    </a>
+                    
+                    <a href="img/placeholder-grande-9.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-9.jpg" alt="Descripción de la imagen 9">
+                    </a>
+                    <a href="img/placeholder-grande-10.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-10.jpg" alt="Descripción de la imagen 10">
+                    </a>
+                    <a href="img/placeholder-grande-11.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-11.jpg" alt="Descripción de la imagen 11">
+                    </a>
+                    <a href="img/placeholder-grande-12.jpg" class="gallery-item">
+                        <img src="img/placeholder-thumb-12.jpg" alt="Descripción de la imagen 12">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <div class="lightbox" id="gallery-lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <a class="lightbox-prev" id="lightbox-prev">&#10094;</a>
+        <a class="lightbox-next" id="lightbox-next">&#10095;</a>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const lightbox = document.getElementById("gallery-lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.getElementById("lightbox-close");
+        const prevBtn = document.getElementById("lightbox-prev");
+        const nextBtn = document.getElementById("lightbox-next");
+
+        let currentImageIndex;
+        // Creamos un array con todas las URLs de las imágenes grandes
+        const images = Array.from(galleryItems).map(item => item.href);
+
+        if (lightbox) {
+            
+            galleryItems.forEach((item, index) => {
+                item.addEventListener("click", (e) => {
+                    e.preventDefault(); // Evita que el link se abra
+                    currentImageIndex = index;
+                    showImage(currentImageIndex);
+                    lightbox.classList.add("active");
+                });
+            });
+
+            function showImage(index) {
+                lightboxImg.src = images[index];
+                currentImageIndex = index; // Actualiza el índice
+            }
+
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                showImage(currentImageIndex);
+            }
+
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                showImage(currentImageIndex);
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove("active");
+            }
+
+            closeBtn.addEventListener("click", closeLightbox);
+            nextBtn.addEventListener("click", showNextImage);
+            prevBtn.addEventListener("click", showPrevImage);
+
+            // Cierra el lightbox si se hace clic en el fondo oscuro
+            lightbox.addEventListener("click", (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Navegación con teclado
+            document.addEventListener("keydown", (e) => {
+                if (lightbox.classList.contains("active")) {
+                    if (e.key === "ArrowRight") {
+                        showNextImage();
+                    } else if (e.key === "ArrowLeft") {
+                        showPrevImage();
+                    } else if (e.key === "Escape") {
+                        closeLightbox();
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

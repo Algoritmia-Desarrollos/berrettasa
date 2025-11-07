@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Servicios - Carlos D. Berretta e Hijo S.A.</title>
+    
+    <meta name="description" content="Servicio integral de recolección en Jaulas, Volquetes (Roll Off/Roll On), Retiro de Fardos y Compactadoras de Cartón.">
+    
+    <style>
+        /* --- VARIABLES GLOBALES Y ESTILO BASE --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        :root {
+            --color-fondo: #FFFFFF;
+            --color-tarjeta: #F5F5F5;
+            --border-color: #EEEEEE;
+            --color-texto-principal: #1e1e1e;
+            --color-texto-secundario: #555555;
+            --color-acento: #f37021; 
+            --color-fondo-dark: #111111;
+            --color-texto-principal-dark: #FFFFFF;
+            --color-texto-secundario-dark: #A3A3A3;
+            --border-color-dark: #222222;
+            --font-principal: "proxima-nova", "system-ui", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --border-radius: 16px;
+        }
+
+        /* --- RESET Y BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        body {
+            font-family: var(--font-principal);
+            background-color: var(--color-fondo);
+            color: var(--color-texto-principal);
+            overflow-x: hidden;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* --- PLACEHOLDERS Y TIPOGRAFÍA --- */
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+            background-color: #a5d6a7; /* Verde placeholder */
+            min-height: 100px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            color: var(--color-texto-principal);
+        }
+        h1 { font-size: clamp(2.2rem, 7vw, 4.0rem); line-height: 1.1; } 
+        h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); line-height: 1.2; margin-bottom: 15px;}
+        h3 { font-size: 1.35rem; }
+
+        p {
+            color: var(--color-texto-secundario);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        p.lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-texto-principal);
+        }
+        a {
+            color: var(--color-acento);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        ul { list-style: none; }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        section {
+            padding: 80px 0; 
+            border-bottom: 1px solid var(--border-color);
+        }
+        section:first-child {
+            padding-top: 0;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* --- BOTONES (Estilo CTA) --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: var(--color-acento);
+            color: var(--color-fondo);
+        }
+        .btn-primary:hover {
+            background-color: var(--color-texto-principal);
+            color: var(--color-fondo);
+            transform: scale(1.05);
+        }
+        
+        /* --- ESTILOS DE PÁGINA "SERVICIOS" --- */
+
+        /* 1. Hero de Página (Título) */
+        .page-hero-section {
+            background-color: var(--color-fondo-dark);
+            color: var(--color-texto-principal-dark);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .page-hero-section .container {
+            text-align: center;
+        }
+        .page-hero-section .page-title {
+            color: var(--color-texto-principal-dark);
+            margin: 10px 0 0 0;
+        }
+
+        /* 2. Intro de Servicios */
+        .services-intro {
+            text-align: center;
+            padding: 60px 0 0 0;
+            border-bottom: none;
+        }
+        .services-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* 3. Layout de Detalle de Servicio */
+        .service-detail-section {
+            padding: 40px 0 80px 0; /* Menos padding arriba, más abajo */
+        }
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 columna en móvil */
+            gap: 40px;
+            align-items: center;
+        }
+        .image-content {
+            order: -1; /* Imagen arriba en móvil */
+        }
+        .image-content img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        .text-content p {
+            margin-bottom: 30px; /* Más espacio antes del acordeón */
+        }
+        .text-content h2 {
+            color: var(--color-acento); /* Títulos de servicio en naranja */
+        }
+
+        /* 4. CTA Section (Reutilizada) */
+        .cta-section {
+            background-color: var(--color-fondo-dark);
+            color: var(--color-texto-principal-dark);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color-dark);
+        }
+        .cta-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+        .cta-section h3 {
+            color: var(--color-texto-principal-dark);
+            margin-bottom: 10px;
+        }
+        .cta-section .cta-info {
+            width: 100%;
+        }
+        /* --- Corrección botón CTA en móvil --- */
+        .cta-section .cta-info .btn {
+            width: 100%;
+        }
+
+        /* --- ACORDEÓN (Para sub-servicios) --- */
+        .accordion {
+            margin-top: 20px;
+        }
+        .accordion-item {
+            border-top: 1px solid var(--border-color);
+        }
+        .accordion-item:last-child { 
+            border-bottom: 1px solid var(--border-color);
+        }
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            text-align: left;
+            font-family: var(--font-principal);
+            font-size: 1.1rem; /* Un poco más chico */
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+        .accordion-header:hover {
+            color: var(--color-acento);
+        }
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--color-acento);
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-header::after { /* CLASE JS */
+            transform: rotate(45deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content p {
+            padding: 0 0 20px 0;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* --- MEDIA QUERIES (TABLET Y SUPERIOR) --- */
+        @media (min-width: 768px) {
+            .page-hero-section .container {
+                text-align: left;
+            }
+            .grid-2-col {
+                grid-template-columns: 1fr 1fr; /* 2 columnas */
+                gap: 60px;
+            }
+            .image-content {
+                order: 0; /* Orden natural en desktop */
+            }
+            /* Invertir el orden (efecto zigzag) */
+            .grid-2-col.reverse-on-desktop {
+                grid-template-columns: 1fr 1fr;
+            }
+            .grid-2-col.reverse-on-desktop .image-content {
+                order: 1; /* Imagen a la derecha */
+            }
+            .grid-2-col.reverse-on-desktop .text-content {
+                order: 0; /* Texto a la izquierda */
+            }
+
+            /* CTA Section */
+            .cta-section .container {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+            .cta-section .cta-content {
+                flex-basis: 70%;
+            }
+            .cta-section .cta-info {
+                flex-basis: 30%;
+                text-align: right;
+            }
+            /* --- Corrección botón CTA en tablet+ --- */
+            .cta-section .cta-info .btn {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="berretta-page-content">
+
+        <section class="page-hero-section">
+            <div class="container">
+                <h1 class="page-title">Nuestros Servicios</h1>
+            </div>
+        </section>
+
+        <section class="services-intro">
+            <div class="container">
+                <p>En Carlos d Berretta e hijo SA, ofrecemos un servicio integral de recolección de materiales reciclables, diseñado para facilitar la gestión de residuos tanto para particulares como para empresas. En caso de que lo requiera ofrecemos certificado de disposición final de los materiales.</p>
+            </div>
+        </section>
+
+        <section class="service-detail-section">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div class="text-content">
+                        <h2>Recolección en Jaulas</h2>
+                        <p>Disponemos de jaulas para la recolección de materiales reciclables en volúmenes moderados. Una vez que tu jaula esté llena, simplemente contáctanos y coordinaremos su retiro o un cambio por otra jaula vacía.</p>
+                        
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">Coordinación de Retiro</button>
+                                <div class="accordion-content">
+                                    <p>Cuando la jaula esté llena, solo debes contactarnos y programamos su retiro.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">Sustitución de Jaulas</button>
+                                <div class="accordion-content">
+                                    <p>Si prefieres, también realizamos el cambio de la jaula llena por una vacía para que el proceso de recolección sea continuo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <img src="img/servicio-jaulas-detalle.jpg" alt="Jaulas metálicas para recolección de cartón y reciclables">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-detail-section" style="background-color: var(--color-tarjeta);">
+            <div class="container">
+                <div class="grid-2-col reverse-on-desktop">
+                    <div class="image-content">
+                        <img src="img/servicio-volquetes-detalle.jpg" alt="Camión depositando volquete con sistema Roll Off / Roll On">
+                    </div>
+                    <div class="text-content">
+                        <h2>Recolección en Volquetes (Sistema Roll Off/Roll On)</h2>
+                        <p>Para la gestión de grandes volúmenes de material reciclable, utilizamos volquetes con sistema roll off/roll on. Al llenar tu volquete, comunícate con nosotros para coordinar el retiro o el cambio por otro contenedor vacío.</p>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">Colocación del Volquete</button>
+                                <div class="accordion-content">
+                                    <p>Instalamos un volquete de gran capacidad en el lugar indicado para que puedas depositar materiales voluminosos o grandes cantidades de residuos reciclables.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">Llenado del Volquete</button>
+                                <div class="accordion-content">
+                                    <p>Una vez colocado, puedes utilizar el volquete para recolectar y almacenar los materiales hasta que esté completo.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">Retiro y Sustitución</button>
+                                <div class="accordion-content">
+                                    <p>Cuando el volquete esté lleno, nos contactas y coordinamos su retiro. Podemos sustituirlo por otro vacío para asegurar la continuidad de la recolección.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="service-detail-section">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div class="text-content">
+                        <h2>Retiro de Fardos en Carrocería Playa</h2>
+                        <p>Para empresas que generan fardos de material reciclable, ofrecemos un servicio especializado de recolección utilizando volquetes playos, garantizando una recolección eficiente y segura.</p>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">Carga de Fardos en Carrocería Playa</button>
+                                <div class="accordion-content">
+                                    <p>Se carga el volquete playo con fardos de materiales reciclables, facilitando su transporte y manipulación.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">Coordinación de Retiro</button>
+                                <div class="accordion-content">
+                                    <p>Cuando el usuario tenga los fardos listos para completar una carga, solo necesita contactarnos para programar su retiro.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">Transporte</button>
+                                <div class="accordion-content">
+                                    <p>Nos encargamos de coordinar el servicio y enviamos el camión adecuado para el retiro de sus fardos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <img src="img/servicio-fardos-detalle.jpg" alt="Camión de carrocería playa cargando fardos de cartón">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-detail-section" style="background-color: var(--color-tarjeta);">
+            <div class="container">
+                <div class="grid-2-col reverse-on-desktop">
+                    <div class="image-content">
+                        <img src="img/servicio-compactadoras-detalle.jpg" alt="Compactadora de cartón de última tecnología">
+                    </div>
+                    <div class="text-content">
+                        <h2>Compactadoras de Cartón de Última Tecnología</h2>
+                        <p>Si tu empresa maneja grandes cantidades de cartón, contamos con compactadoras de última generación. Este equipo optimiza el espacio y facilita el manejo del material, mejorando la eficiencia del servicio.</p>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header">Carga de Cartón</button>
+                                <div class="accordion-content">
+                                    <p>Introduce el cartón en la compactadora, diseñada para procesar grandes volúmenes de manera eficiente.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">Compactación Automática</button>
+                                <div class="accordion-content">
+                                    <p>Compactadora de última tecnología realiza el prensado del cartón, reduciendo significativamente su volumen y facilitando su almacenamiento y transporte.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">Extracción del volquete</button>
+                                <div class="accordion-content">
+                                    <p>Cuando el volquete esté lleno, nos contactas y coordinamos su cambio. Podemos sustituirlo por otro vacío para asegurar la continuidad de la recolección.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h3>Contáctese con nosotros, estamos a su servicio</h3>
+                </div>
+                <div class="cta-info">
+                    <a href="/#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+    /*
+     * SCRIPT AUTOCONTENIDO PARA WORDPRESS
+     * 1. Acordeones (Servicios)
+     */
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        /**
+         * 1. ACORDEONES (Servicios)
+         */
+        const accordionItems = document.querySelectorAll(".accordion-item");
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector(".accordion-header");
+            const content = item.querySelector(".accordion-content");
+
+            if (header && content) {
+                header.addEventListener("click", () => {
+                    item.classList.toggle("active");
+                    if (item.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = null;
+                    }
+                });
+            }
+        });
+
+    });
+    </script>
+</body>
+</html>
