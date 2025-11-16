@@ -47,22 +47,14 @@
             line-height: 1.6;
         }
 
-        /* --- PLACEHOLDERS Y TIPOGRAFÍA --- */
+        /* --- TIPOGRAFÍA Y PLACEHOLDERS --- */
         img, video {
             max-width: 100%;
             height: auto;
             display: block;
             border-radius: var(--border-radius);
-            background-color: #a5d6a7; /* Verde placeholder */
+            background-color: var(--color-tarjeta); /* Fondo gris claro */
             min-height: 100px;
-            color: #333;
-            font-weight: 500;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 10px;
         }
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
@@ -81,17 +73,11 @@
             margin-bottom: 20px;
             font-weight: 400;
         }
-        p.lead {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--color-texto-principal);
-        }
         a {
             color: var(--color-acento);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        ul { list-style: none; }
         .container {
             width: 90%;
             max-width: 1100px;
@@ -136,16 +122,27 @@
 
         /* 1. Hero de Página (Título) */
         .page-hero-section {
-            background-color: var(--color-fondo-dark);
+            /* IMAGEN DE TU CÓDIGO */
+            background-image: radial-gradient(circle at top left,#2b303a 10%,rgba(43,48,58,0.5) 100%),url(https://berrettasa.com/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-10-31-a-las-11.35.51_2cda5c72-COMPRIMIDA.webp)!important;
+            background-size: cover;
+            background-position: center;
+            
             color: var(--color-texto-principal-dark);
             padding: 60px 0;
             border-bottom: 1px solid var(--border-color-dark);
         }
         .page-hero-section .container {
-            text-align: center;
+            text-align: left; /* Alineado como en tu Divi */
         }
         .page-hero-section .page-title {
             color: var(--color-texto-principal-dark);
+            font-size: clamp(2.5rem, 8vw, 100px); /* Tamaño de tu Divi */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            line-height: 1.4em;
+            border-left: 10px solid var(--color-acento);
+            padding-left: 30px;
             margin: 10px 0 0 0;
         }
 
@@ -163,7 +160,7 @@
 
         /* 3. Layout de Detalle de Servicio */
         .service-detail-section {
-            padding: 40px 0 80px 0; /* Menos padding arriba, más abajo */
+            padding: 40px 0 80px 0;
         }
         .grid-2-col {
             display: grid;
@@ -180,7 +177,7 @@
             object-fit: cover;
         }
         .text-content p {
-            margin-bottom: 30px; /* Más espacio antes del acordeón */
+            margin-bottom: 30px;
         }
         .text-content h2 {
             color: var(--color-acento); /* Títulos de servicio en naranja */
@@ -207,7 +204,6 @@
         .cta-section .cta-info {
             width: 100%;
         }
-        /* --- Corrección botón CTA en móvil --- */
         .cta-section .cta-info .btn {
             width: 100%;
         }
@@ -229,7 +225,7 @@
             padding: 20px 0;
             text-align: left;
             font-family: var(--font-principal);
-            font-size: 1.1rem; /* Un poco más chico */
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -270,20 +266,14 @@
                 gap: 60px;
             }
             .image-content {
-                order: 0; /* Orden natural en desktop */
-            }
-            /* Invertir el orden (efecto zigzag) */
-            .grid-2-col.reverse-on-desktop {
-                grid-template-columns: 1fr 1fr;
+                order: 0;
             }
             .grid-2-col.reverse-on-desktop .image-content {
-                order: 1; /* Imagen a la derecha */
+                order: 1;
             }
             .grid-2-col.reverse-on-desktop .text-content {
-                order: 0; /* Texto a la izquierda */
+                order: 0;
             }
-
-            /* CTA Section */
             .cta-section .container {
                 flex-direction: row;
                 justify-content: space-between;
@@ -296,7 +286,6 @@
                 flex-basis: 30%;
                 text-align: right;
             }
-            /* --- Corrección botón CTA en tablet+ --- */
             .cta-section .cta-info .btn {
                 width: auto;
             }
@@ -342,7 +331,7 @@
                         </div>
                     </div>
                     <div class="image-content">
-                        <img src="img/servicio-jaulas-detalle.jpg" alt="Jaulas metálicas para recolección de cartón y reciclables">
+                        <img src="https://berrettasa.com/wp-content/uploads/2024/11/8.webp" alt="Jaulas metálicas para recolección de cartón y reciclables">
                     </div>
                 </div>
             </div>
@@ -352,7 +341,7 @@
             <div class="container">
                 <div class="grid-2-col reverse-on-desktop">
                     <div class="image-content">
-                        <img src="img/servicio-volquetes-detalle.jpg" alt="Camión depositando volquete con sistema Roll Off / Roll On">
+                        <img src="https://berrettasa.com/wp-content/uploads/2024/11/10.webp" alt="Camión depositando volquete con sistema Roll Off / Roll On">
                     </div>
                     <div class="text-content">
                         <h2>Recolección en Volquetes (Sistema Roll Off/Roll On)</h2>
@@ -412,7 +401,7 @@
                         </div>
                     </div>
                     <div class="image-content">
-                        <img src="img/servicio-fardos-detalle.jpg" alt="Camión de carrocería playa cargando fardos de cartón">
+                        <img src="https://berrettasa.com/wp-content/uploads/2024/11/9.webp" alt="Camión de carrocería playa cargando fardos de cartón">
                     </div>
                 </div>
             </div>
@@ -422,7 +411,7 @@
             <div class="container">
                 <div class="grid-2-col reverse-on-desktop">
                     <div class="image-content">
-                        <img src="img/servicio-compactadoras-detalle.jpg" alt="Compactadora de cartón de última tecnología">
+                        <img src="https://berrettasa.com/wp-content/uploads/2024/11/11.webp" alt="Compactadora de cartón de última tecnología">
                     </div>
                     <div class="text-content">
                         <h2>Compactadoras de Cartón de Última Tecnología</h2>
